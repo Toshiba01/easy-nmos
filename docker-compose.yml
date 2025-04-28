@@ -9,7 +9,7 @@ services:
     hostname: nmos-registry
     domainname: local
     ports:
-    - "80-81:80-81"
+    - "8080-8081:80-81"
     - "1883:1883"
     volumes:
     - "./registry.json:/home/registry.json"
@@ -26,7 +26,7 @@ services:
     hostname: nmos-virtnode
     domainname: local
     ports:
-    - "80-81:80-81"
+    - "9080-9081:80-81"
     volumes:
     - "./node.json:/home/node.json"
     environment:
@@ -63,7 +63,7 @@ networks:
         # Create external macvlan subnet using host physical interface allowing containers to have their own IP addresses
         driver: macvlan
         driver_opts:
-            parent: ens33
+            parent: eth0
         ipam:
             config:
             - subnet: 192.168.6.0/24
